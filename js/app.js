@@ -10,9 +10,7 @@ var app = angular.module('MyApp', ['ngRoute','ngResource'])
 }]);
 
 var orderFactory = function($resource){
-	return $resource('http://localhost/rest/index.php/order/:orderId', {orderId:'@id'},
-		{ 'get' :  { method:'GET', isArray: true }})
-	 };
+	return $resource('http://localhost/rest/index.php/order/:orderId')};
 
 
 app.factory('Order', [ '$resource', orderFactory ]);

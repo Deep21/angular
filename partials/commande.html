@@ -11,16 +11,18 @@
                   <th>product_name</th>
                   <th>product_quantity</th>
                   <th>product_price</th>
+                  <th>delete</th>
                 </tr>
               </thead>
               <tbody>
            		<tr ng-repeat="order in orders" >
            		<td></td>
-           	
+
         			<td><a ng-href="#/detail-order/{{ order.id_order }}">{{ order.reference }}</a></td>
         			<td>{{ order.product }}</td>
         			<td>{{ order.quantity }}</td>
         			<td>{{ order.price }}</td>
+        			<td><a ng-href="#/order/delete/{{ order.id_order }}">Supprimer</a></td>
     			</tr>
  
               </tbody>

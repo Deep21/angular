@@ -27,7 +27,6 @@ function orderCtrl($scope, Order, $resource, $routeParams){
    $scope.orders = [];
    if($routeParams.orderId == null){
 	  var orders = Order.query(function() {
-	     console.log(orders);
 	     $scope.orders = orders;
 	  }); 
   //query() returns all the entries

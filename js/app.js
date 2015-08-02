@@ -14,8 +14,10 @@ var orderFactory = function($resource){
 	return $resource('http://localhost/rest/index.php/order/:orderId')};
 
 
+
 var userFactory = function($resource){
 	return $resource('http://localhost/rest/index.php/user/:userId')};
+
 
 
 app.factory('Order', ['$resource', orderFactory]);

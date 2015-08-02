@@ -4,6 +4,20 @@ function loginCtrl($scope){
 
 }
 
+function userAddCtrl($scope, User, $resource, $routeParams){
+
+	$scope.submit = function(){
+		$scope.user = new User(); //You can instantiate resource class
+		$scope.user.f = 'gc';
+	
+		User.save($scope.user, function(resp) {				 
+			console.log(resp.succes);
+  		}); 
+
+	}
+
+}
+
 
 function ControllerTwo($scope){
 	
@@ -13,7 +27,7 @@ function orderCtrl($scope, Order, $resource, $routeParams){
    $scope.orders = [];
    if($routeParams.orderId == null){
 	  var orders = Order.query(function() {
-	    console.log(orders);
+	     console.log(orders);
 	     $scope.orders = orders;
 	  }); 
   //query() returns all the entries
@@ -52,4 +66,5 @@ function orderCtrl($scope, Order, $resource, $routeParams){
 
 app.controller('loginCtrl', loginCtrl)
 .controller('ControllerTwo', ControllerTwo)
-.controller('orderCtrl', orderCtrl);
+.controller('orderCtrl', orderCtrl)
+.controller('userAddCtrl', userAddCtrl);

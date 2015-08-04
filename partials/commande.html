@@ -1,9 +1,6 @@
-<div class="container">
-      <!-- Main component for a primary marketing message or call to action -->
-
 
           <div class="table-responsive">
-            <table ng-controller="orderCtrl" class="table table-striped">
+            <table class="table table-striped">
               <thead>
                 <tr>
                   <th>#</th>
@@ -16,8 +13,7 @@
               </thead>
               <tbody>
            		<tr ng-repeat="order in orders" >
-           		<td></td>
-
+           		<td>
         			<td><a ng-href="#/detail-order/{{ order.id_order }}">{{ order.reference }}</a></td>
         			<td>{{ order.product }}</td>
         			<td>{{ order.quantity }}</td>
@@ -30,9 +26,6 @@
           </div>
 
 
-</div> <!-- /container -->
 
 <!-- Columns are always 50% wide, on mobile and desktop -->
 
-
-</div>

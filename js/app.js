@@ -11,12 +11,14 @@ var app = angular.module('MyApp', ['ngRoute','ngResource'])
 }]);
 
 var orderFactory = function($resource){
-	return $resource('http://localhost/rest/index.php/order/:orderId')};
+	return $resource('http://localhost/rest/index.php/order/:orderId')
+};
 
 
 
 var userFactory = function($resource){
-	return $resource('http://localhost/rest/index.php/user/:userId')};
+	return $resource('http://localhost/rest/index.php/user/:userId')
+};
 
 
 

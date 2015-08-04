@@ -6,13 +6,19 @@ function loginCtrl($scope){
 
 function userAddCtrl($scope, User, $resource, $routeParams){
 
-	$scope.submit = function(){
-		$scope.user = new User(); //You can instantiate resource class
-		$scope.user.f = 'gc';
-	
-		User.save($scope.user, function(resp) {				 
-			console.log(resp.succes);
-  		}); 
+	$scope.userSubmit = function(){
+		var user = new User({number:'0123'}); 
+		var save = user.$save();
+		save.then(function(res){
+			console.log(res);
+
+		}).catch(function(res) {
+
+		 console.log("error: ", res); 
+		});
+
+
+		
 
 	}
 

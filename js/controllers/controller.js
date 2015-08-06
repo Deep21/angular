@@ -1,15 +1,19 @@
 'use strict';
 
-function loginCtrl($scope){
-
-}
-
 function userAddCtrl($scope, User, $resource, $routeParams){
-
-	$scope.userSubmit = function(){
-		var user = new User({number:'0123'}); 
+  
+	$scope.userSubmit 	= function(){
+		var birthdate 	= $scope.user.birthdate;
+		var sex 		= $scope.user.sexe;
+		var lastname 	= $scope.user.lastname;
+		var firstname 	= $scope.user.firstname;
+		var email 		= $scope.user.email;
+		var address 	= $scope.user.address;
+		var user = new User({birthdate: birthdate, sex: sex, lastname: lastname, firstname: firstname, email: email, address: address}); 
 		var save = user.$save();
+
 		save.then(function(res){
+			$scope.submissionSuccess = true;
 			console.log(res);
 
 		}).catch(function(res) {
@@ -17,19 +21,26 @@ function userAddCtrl($scope, User, $resource, $routeParams){
 		 console.log("error: ", res); 
 		});
 
-
-		
-
 	}
 
+
 }
 
 
-function ControllerTwo($scope){
-	
-}
 
-function orderCtrl($scope, Order, $resource, $routeParams){
+function orderCtrl($route, $scope, Order, $resource, $routeParams, $location){
+
+	$scope.onDeleteOrder = function(id_order){
+		var order = new Order(); 
+		order.$delete_order({id_order: id_order})
+		.then(function(res){
+		//permet de charger le cotroller
+		$route.reload();
+		}).catch(function(res) {
+		 console.log("error: ", res); 
+		});
+	}
+
    $scope.orders = [];
    if($routeParams.orderId == null){
 	  var orders = Order.query(function() {
@@ -69,7 +80,5 @@ function orderCtrl($scope, Order, $resource, $routeParams){
 
 }
 
-app.controller('loginCtrl', loginCtrl)
-.controller('ControllerTwo', ControllerTwo)
-.controller('orderCtrl', orderCtrl)
+app.controller('orderCtrl', orderCtrl)
 .controller('userAddCtrl', userAddCtrl);

@@ -18,12 +18,15 @@
         			<td>{{ order.product }}</td>
         			<td>{{ order.quantity }}</td>
         			<td>{{ order.price }}</td>
-        			<td><a ng-href="#/order/delete/{{ order.id_order }}">Supprimer</a></td>
+        			<td><button type="button" ng-click="onDeleteOrder(order.id_order);" class="btn btn-link">Supprimer</button></td>
+
     			</tr>
  
               </tbody>
             </table>
           </div>
+
+
 
 
 

@@ -33,14 +33,33 @@
                         <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
                     </div>
                 </div>
-       
 
+                  <div class="form-group">
+                    <label for="Sexe">Sexe</label>
+                       <label class="checkbox-inline">
+            				<input type="radio" name="favoriteColors" value="0" ng-model="user.sexe"> M.
+        			   </label>
+        			      <label class="checkbox-inline">
+            				<input type="radio" name="favoriteColors" value="1" ng-model="user.sexe"> Madame
+        			   </label>
+                </div>
+       
+         		<div class="form-group">
+         		<label>Birth Date</label>
+				    <label class="input-group">
+  						<input class="form-control" id="datepicker"type="text" ng-model="user.birthdate" datepicker />
+					<label/>
+					</div>
                 <input type="submit" name="submit" id="submit" value="Ajouter" class="btn btn-info pull-left">
+            
+
+
             </div>
         </form>
 
     </div>
-      
+      <div ng-show="submissionSuccess">It worked!</div>
+
 
     </div> <!-- /container -->
 

@@ -1,34 +1,27 @@
-
-          <div class="table-responsive">
-            <table class="table table-striped">
-              <thead>
-                <tr>
-                  <th>#</th>
-                  <th>reference</th>
-                  <th>product_name</th>
-                  <th>product_quantity</th>
-                  <th>product_price</th>
-                  <th>delete</th>
-                </tr>
-              </thead>
-              <tbody>
-           		<tr ng-repeat="order in orders" >
-           		<td>
-        			<td><a ng-href="#/detail-order/{{ order.id_order }}">{{ order.reference }}</a></td>
-        			<td>{{ order.product }}</td>
-        			<td>{{ order.quantity }}</td>
-        			<td>{{ order.price }}</td>
-        			<td><button type="button" ng-click="onDeleteOrder(order.id_order);" class="btn btn-link">Supprimer</button></td>
-
-    			</tr>
- 
-              </tbody>
-            </table>
-          </div>
-
-
-
-
-
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>reference</th>
+                <th>product_name</th>
+                <th>product_quantity</th>
+                <th>product_price</th>
+                <th>delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="order in orders">
+                <td>
+                    <td><a ng-href="#/detail-order/{{ order.id_order }}">{{ order.reference }}</a></td>
+                    <td>{{ order.product }}</td>
+                    <td>{{ order.quantity }}</td>
+                    <td>{{ order.price }}</td>
+                    <td>
+                        <button type="button" ng-click="onDeleteOrder(order.id_order);" class="btn btn-link">Supprimer</button>
+                    </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
 <!-- Columns are always 50% wide, on mobile and desktop -->
-

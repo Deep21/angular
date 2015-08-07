@@ -1,63 +1,76 @@
 'use strict';
 
-function userAddCtrl($scope, User, $resource, $routeParams){
-  
-	$scope.userSubmit 	= function(){
-		var birthdate 	= $scope.user.birthdate;
-		var sex 		= $scope.user.sexe;
-		var lastname 	= $scope.user.lastname;
-		var firstname 	= $scope.user.firstname;
-		var email 		= $scope.user.email;
-		var address 	= $scope.user.address;
-		var user = new User({birthdate: birthdate, sex: sex, lastname: lastname, firstname: firstname, email: email, address: address}); 
-		var save = user.$save();
+function userAddCtrl($scope, User, $resource, $routeParams, testService) {
 
-		save.then(function(res){
-			$scope.submissionSuccess = true;
-			console.log(res);
+    $scope.userSubmit = function() {
+        testService.saveEmail("samfisher8456@hotmail.com");
+        var birthdate = $scope.user.birthdate;
+        var sex = $scope.user.sexe;
+        var lastname = $scope.user.lastname;
+        var firstname = $scope.user.firstname;
+        var email = $scope.user.email;
+        var address = $scope.user.address;
+        var user = new User({
+            birthdate: birthdate,
+            sex: sex,
+            lastname: lastname,
+            firstname: firstname,
+            email: email,
+            address: address
+        });
+        var save = user.$save();
 
-		}).catch(function(res) {
+        save.then(function(res) {
+            $scope.submissionSuccess = true;
+            console.log(res);
 
-		 console.log("error: ", res); 
-		});
+        }).catch(function(res) {
 
-	}
+            console.log("error: ", res);
+        });
+
+    }
 
 
 }
 
 
 
-function orderCtrl($route, $scope, Order, $resource, $routeParams, $location){
+function orderCtrl($route, $scope, Order, $resource, $routeParams, $location, testService) {
+    var em = testService.getEmail("samfisher8456@hotmail.com");
+    console.log(em);
+    $scope.onDeleteOrder = function(id_order) {
+        var order = new Order();
+        order.$delete_order({
+                id_order: id_order
+            })
+            .then(function(res) {
+                //permet de charger le cotroller
+                $route.reload();
+            }).catch(function(res) {
+                console.log("error: ", res);
+            });
+    }
 
-	$scope.onDeleteOrder = function(id_order){
-		var order = new Order(); 
-		order.$delete_order({id_order: id_order})
-		.then(function(res){
-		//permet de charger le cotroller
-		$route.reload();
-		}).catch(function(res) {
-		 console.log("error: ", res); 
-		});
-	}
+    $scope.orders = [];
+    if ($routeParams.orderId == null) {
+        var orders = Order.query(function() {
+            $scope.orders = orders;
+        });
+        //query() returns all the entries
 
-   $scope.orders = [];
-   if($routeParams.orderId == null){
-	  var orders = Order.query(function() {
-	     $scope.orders = orders;
-	  }); 
-  //query() returns all the entries
- 
-   }else{
-   		var id = $routeParams.orderId;
-  		var order = Order.get({ orderId: $routeParams.orderId }, function() {
-    	console.log(order.id_order,order.reference);
-  	}); 
-  // get() returns a single entry
-   }
+    } else {
+        var id = $routeParams.orderId;
+        var order = Order.get({
+            orderId: $routeParams.orderId
+        }, function() {
+            console.log(order.id_order, order.reference);
+        });
+        // get() returns a single entry
+    }
 
 
-  /* var entry = Order.get({ orderId: $routeParams.orderId }, function() {
+    /* var entry = Order.get({ orderId: $routeParams.orderId }, function() {
     console.log(entry.id_order);
   }); 
   // get() returns a single entry
@@ -81,4 +94,4 @@ function orderCtrl($route, $scope, Order, $resource, $routeParams, $location){
 }
 
 app.controller('orderCtrl', orderCtrl)
-.controller('userAddCtrl', userAddCtrl);
+    .controller('userAddCtrl', userAddCtrl);

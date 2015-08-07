@@ -1,66 +1,55 @@
-
-      <!-- Main component for a primary marketing message or call to action -->
-  <div class="row">
-        <form method="post" role="form" ng-submit="userSubmit()" >
-            <div class="col-lg-6">
-             <div class="form-group">
-
-                    <label for="InputName">Last Name</label>
-                    <div class="input-group">
-                        <input ng-model="user.lastname" type="text" class="form-control" name="InputName" id="LastName" placeholder="Enter Last Name" >
-                        <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
-                    </div>
+<!-- Main component for a primary marketing message or call to action -->
+<div class="row">
+    <form method="post" role="form" ng-submit="userSubmit()">
+        <div class="col-lg-6">
+            <div class="form-group">
+                <label for="InputName">Last Name</label>
+                <div class="input-group">
+                    <input ng-model="user.lastname" type="text" class="form-control" name="InputName" id="LastName" placeholder="Enter Last Name">
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
                 </div>
-                <div class="form-group">
-                    <label for="InputEmail">First Name</label>
-                    <div class="input-group">
-                        <input ng-model="user.firstname" type="text" class="form-control" id="InputEmailFirst" name="FirstName" placeholder="Enter First Name" >
-                        <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="InputEmail">Email</label>
-                    <div class="input-group">
-                        <input ng-model="user.email" type="email" class="form-control" id="InputEmail" name="InputEmail" placeholder="Email" >
-                        <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
-                    </div>
-                </div>
-
-                    <div class="form-group">
-                    <label for="InputEmail">Address</label>
-                    <div class="input-group">
-                        <input ng-model="user.address" type="text" class="form-control" id="Address" name="InputAddress" placeholder="Address" >
-                        <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
-                    </div>
-                </div>
-
-                  <div class="form-group">
-                    <label for="Sexe">Sexe</label>
-                       <label class="checkbox-inline">
-            				<input type="radio" name="favoriteColors" value="0" ng-model="user.sexe"> M.
-        			   </label>
-        			      <label class="checkbox-inline">
-            				<input type="radio" name="favoriteColors" value="1" ng-model="user.sexe"> Madame
-        			   </label>
-                </div>
-       
-         		<div class="form-group">
-         		<label>Birth Date</label>
-				    <label class="input-group">
-  						<input class="form-control" id="datepicker"type="text" ng-model="user.birthdate" datepicker />
-					<label/>
-					</div>
-                <input type="submit" name="submit" id="submit" value="Ajouter" class="btn btn-info pull-left">
-            
-
-
             </div>
-        </form>
-
-    </div>
-      <div ng-show="submissionSuccess">It worked!</div>
-
-
-    </div> <!-- /container -->
-
+            <div class="form-group">
+                <label for="InputEmail">First Name</label>
+                <div class="input-group">
+                    <input ng-model="user.firstname" type="text" class="form-control" id="InputEmailFirst" name="FirstName" placeholder="Enter First Name">
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="InputEmail">Email</label>
+                <div class="input-group">
+                    <input ng-model="user.email" type="email" class="form-control" id="InputEmail" name="InputEmail" placeholder="Email">
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="InputEmail">Address</label>
+                <div class="input-group">
+                    <input ng-model="user.address" type="text" class="form-control" id="Address" name="InputAddress" placeholder="Address">
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="Sexe">Sexe</label>
+                <label class="checkbox-inline">
+                    <input type="radio" name="favoriteColors" value="0" ng-model="user.sexe"> M.
+                </label>
+                <label class="checkbox-inline">
+                    <input type="radio" name="favoriteColors" value="1" ng-model="user.sexe"> Madame
+                </label>
+            </div>
+            <div class="form-group">
+                <label>Birth Date</label>
+                <label class="input-group">
+                    <input class="form-control" id="datepicker" type="text" ng-model="user.birthdate" datepicker />
+                    <label/>
+            </div>
+            <input type="submit" name="submit" id="submit" value="Ajouter" class="btn btn-info pull-left">
+        </div>
+    </form>
+</div>
+<div ng-show="submissionSuccess">It worked!</div>
+</div>
+<!-- /container -->
 <!-- Columns are always 50% wide, on mobile and desktop -->
